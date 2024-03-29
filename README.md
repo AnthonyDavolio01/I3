@@ -44,8 +44,7 @@ Extract the position of amino acids:
 python extractPositions.py
 ```
 
-## Step 4: 
-Calculate Conditional Mutual Information:
+## Step 4: Calculate Conditional Mutual Information
 ```bash
 python code/I3.py
 ```
