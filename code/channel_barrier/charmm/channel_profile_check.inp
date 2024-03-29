@@ -1,0 +1,105 @@
+* Calculate energy down the ion channel
+
+
+
+
+! Input files
+DIMENS CHSIZE 5000000 MAXRES 3000000
+
+!PRNLEV 0
+!BOMBLEV -2
+
+open write card unit 69 name output/observables/barrier/channel/profile_check.txt
+echu 69
+
+
+! Read topology and parameter files
+stream input/charmm-gui_input-generator/toppar_w_dir.str
+
+!Has sodium if in barrier folder
+open read card unit 10 name output/observables/barrier/psf/3lig.psf 
+read psf unit 10
+close unit 10
+
+
+
+! START FRAME HERE
+set f 100
+label loop
+
+
+    open read card unit 10 name output/observables/barrier/coors/3_na_5ht3.@f.coor
+    read coor card unit 10
+    close unit 10
+
+    set z -80
+    label loop2
+        COOR TRANS zdir 1 SELE segid HETF END !HERE
+        HBONDs UPDAte
+        NBONDs UPDAte
+        INTEraction NOPRint SELE segid HETF END SELE segid PROA .or. segid PROB .or. segid PROC .or. segid PROD .or. segid PROE END
+        set e ?ener
+        echo @e
+        incr z by 1 !HERE
+    if z lt 100 goto loop2
+    echo ___
+
+    incr f by 1
+if f lt 101 goto loop !HERE
+
+
+
+
+
+
+
+
+
+
+
+stop
+
+
+
+
+
+
+
+open read card unit 10 name ../simulation_step/crot/traj2e7.psf
+read psf unit 10
+close unit 10
+
+open read unform unit 22 name ../simulation_step/crot/traj2e7.dcd
+TRAJECTORY FIRSTU 22 NUNIT 1
+!traj query unit 22
+
+
+! Read SODIUM
+!open read card unit 10 name na/na_heta.crd
+!read sequence coor card unit 10 resid
+!generate SOD setup !warn first NTER last CTER
+
+!open read unit 10 card name na/na_heta.crd
+!read coor unit 10 card resid
+
+!Begin loop
+
+set x 1
+label loop
+    traj read
+    HBONDs UPDAte
+    NBONDs UPDAte
+
+    set z -80
+    label loop2
+        COOR SET 0 0 @z SELE RESID SOD END
+        INTEraction NOPRint SELE RESID SOD END SELE segid PROA .or. segid PROB .or. segid PROC .or. segid PROD .or. segid PROE END
+        set e ?ener
+        echo @e
+        stop
+        incr z by 1
+    if z lt 100 goto loop2
+    echo ___
+    
+    incr x by 1
+if x lt ?nfile goto loop

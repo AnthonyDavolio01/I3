@@ -1,0 +1,32 @@
+* Make a crd for each frame
+
+BOMBLEV -2
+! Input files
+DIMENS CHSIZE 5000000 MAXRES 3000000
+
+
+! Read topology and parameter files
+stream input/charmm-gui_input-generator/toppar_w_dir.str
+
+open read card unit 10 name output/mc/1lig.psf
+read psf unit 10
+close unit 10
+
+open read unform unit 22 name output/mc/1lig.dcd
+TRAJECTORY FIRSTU 22 NUNIT 1
+!traj query unit 22
+
+
+!Begin loop
+
+set x 1
+label loop
+    traj read
+
+    !read coor file unit 11 ifile @x
+    OPEN WRITE CARD UNIT 12 NAME output/observables/barrier/coors/1_5ht3.@x.coor
+    WRITE COOR CARD UNIT 12
+    !WRITE COOR PDB UNIT 12
+
+    incr x by 1
+if x lt ?nfile goto loop

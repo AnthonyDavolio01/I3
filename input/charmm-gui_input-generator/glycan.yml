@@ -1,0 +1,221 @@
+- chain: F
+  glycan_list:
+    F: [1, 2]
+  grs: |
+    1 BGLCNA
+    2 - 14B: BGLCNA
+  patches: {}
+  residue_list: [1, 2]
+  residues:
+    1: {ires: 1, linkage: null, linkage_patch: null, linked_chain: null, linked_ires: null, linked_resid: null, resid: 1, resname: BGLCNA}
+    2: {ires: 2, linkage: 14BB, linkage_patch: 14BB, linked_chain: F, linked_ires: 1, linked_resid: 1, resid: 2, resname: BGLCNA}
+  root: 1
+  segid: CARA
+  type: ligand
+- chain: G
+  glycan_list:
+    G: [1, 2, 3]
+  grs: |
+    1 BGLCNA
+    2 - 14B: BGLCNA
+    3 - - 14B: BMAN
+  patches: {}
+  residue_list: [1, 2, 3]
+  residues:
+    1: {ires: 1, linkage: null, linkage_patch: null, linked_chain: null, linked_ires: null, linked_resid: null, resid: 1, resname: BGLCNA}
+    2: {ires: 2, linkage: 14BB, linkage_patch: 14BB, linked_chain: G, linked_ires: 1, linked_resid: 1, resid: 2, resname: BGLCNA}
+    3: {ires: 3, linkage: 14BB, linkage_patch: 14BB, linked_chain: G, linked_ires: 2, linked_resid: 2, resid: 3, resname: BMAN}
+  root: 1
+  segid: CARB
+  type: ligand
+- chain: H
+  glycan_list:
+    H: [1, 2]
+  grs: |
+    1 BGLCNA
+    2 - 14B: BGLCNA
+  patches: {}
+  residue_list: [1, 2]
+  residues:
+    1: {ires: 1, linkage: null, linkage_patch: null, linked_chain: null, linked_ires: null, linked_resid: null, resid: 1, resname: BGLCNA}
+    2: {ires: 2, linkage: 14BB, linkage_patch: 14BB, linked_chain: H, linked_ires: 1, linked_resid: 1, resid: 2, resname: BGLCNA}
+  root: 1
+  segid: CARC
+  type: ligand
+- chain: I
+  glycan_list:
+    I: [1, 2, 3]
+  grs: |
+    1 BGLCNA
+    2 - 14B: BGLCNA
+    3 - - 14B: BMAN
+  patches: {}
+  residue_list: [1, 2, 3]
+  residues:
+    1: {ires: 1, linkage: NGLB, linkage_patch: NGLB, linked_chain: B, linked_ires: null, linked_resid: '164', resid: 1, resname: BGLCNA}
+    2: {ires: 2, linkage: 14BB, linkage_patch: 14BB, linked_chain: I, linked_ires: 1, linked_resid: 1, resid: 2, resname: BGLCNA}
+    3: {ires: 3, linkage: 14BB, linkage_patch: 14BB, linked_chain: I, linked_ires: 2, linked_resid: 2, resid: 3, resname: BMAN}
+  root: 1
+  segid: CARD
+  type: n-linked
+- chain: J
+  glycan_list:
+    J: [1, 2]
+  grs: |
+    1 BGLCNA
+    2 - 14B: BGLCNA
+  patches: {}
+  residue_list: [1, 2]
+  residues:
+    1: {ires: 1, linkage: null, linkage_patch: null, linked_chain: null, linked_ires: null, linked_resid: null, resid: 1, resname: BGLCNA}
+    2: {ires: 2, linkage: 14BB, linkage_patch: 14BB, linked_chain: J, linked_ires: 1, linked_resid: 1, resid: 2, resname: BGLCNA}
+  root: 1
+  segid: CARE
+  type: ligand
+- chain: K
+  glycan_list:
+    K: [1, 2]
+  grs: |
+    1 BGLCNA
+    2 - 14B: BGLCNA
+  patches: {}
+  residue_list: [1, 2]
+  residues:
+    1: {ires: 1, linkage: null, linkage_patch: null, linked_chain: null, linked_ires: null, linked_resid: null, resid: 1, resname: BGLCNA}
+    2: {ires: 2, linkage: 14BB, linkage_patch: 14BB, linked_chain: K, linked_ires: 1, linked_resid: 1, resid: 2, resname: BGLCNA}
+  root: 1
+  segid: CARF
+  type: ligand
+- chain: L
+  glycan_list:
+    L: [1, 2, 3]
+  grs: |
+    1 BGLCNA
+    2 - 14B: BGLCNA
+    3 - - 14B: BMAN
+  patches: {}
+  residue_list: [1, 2, 3]
+  residues:
+    1: {ires: 1, linkage: null, linkage_patch: null, linked_chain: null, linked_ires: null, linked_resid: null, resid: 1, resname: BGLCNA}
+    2: {ires: 2, linkage: 14BB, linkage_patch: 14BB, linked_chain: L, linked_ires: 1, linked_resid: 1, resid: 2, resname: BGLCNA}
+    3: {ires: 3, linkage: 14BB, linkage_patch: 14BB, linked_chain: L, linked_ires: 2, linked_resid: 2, resid: 3, resname: BMAN}
+  root: 1
+  segid: CARG
+  type: ligand
+- chain: M
+  glycan_list:
+    M: [1, 2]
+  grs: |
+    1 BGLCNA
+    2 - 14B: BGLCNA
+  patches: {}
+  residue_list: [1, 2]
+  residues:
+    1: {ires: 1, linkage: null, linkage_patch: null, linked_chain: null, linked_ires: null, linked_resid: null, resid: 1, resname: BGLCNA}
+    2: {ires: 2, linkage: 14BB, linkage_patch: 14BB, linked_chain: M, linked_ires: 1, linked_resid: 1, resid: 2, resname: BGLCNA}
+  root: 1
+  segid: CARH
+  type: ligand
+- chain: N
+  glycan_list:
+    N: [1, 2]
+  grs: |
+    1 BGLCNA
+    2 - 14B: BGLCNA
+  patches: {}
+  residue_list: [1, 2]
+  residues:
+    1: {ires: 1, linkage: null, linkage_patch: null, linked_chain: null, linked_ires: null, linked_resid: null, resid: 1, resname: BGLCNA}
+    2: {ires: 2, linkage: 14BB, linkage_patch: 14BB, linked_chain: N, linked_ires: 1, linked_resid: 1, resid: 2, resname: BGLCNA}
+  root: 1
+  segid: CARI
+  type: ligand
+- chain: O
+  glycan_list:
+    O: [1, 2, 3]
+  grs: |
+    1 BGLCNA
+    2 - 14B: BGLCNA
+    3 - - 14B: BMAN
+  patches: {}
+  residue_list: [1, 2, 3]
+  residues:
+    1: {ires: 1, linkage: null, linkage_patch: null, linked_chain: null, linked_ires: null, linked_resid: null, resid: 1, resname: BGLCNA}
+    2: {ires: 2, linkage: 14BB, linkage_patch: 14BB, linked_chain: O, linked_ires: 1, linked_resid: 1, resid: 2, resname: BGLCNA}
+    3: {ires: 3, linkage: 14BB, linkage_patch: 14BB, linked_chain: O, linked_ires: 2, linked_resid: 2, resid: 3, resname: BMAN}
+  root: 1
+  segid: CARJ
+  type: ligand
+- chain: P
+  glycan_list:
+    P: [1, 2]
+  grs: |
+    1 BGLCNA
+    2 - 14B: BGLCNA
+  patches: {}
+  residue_list: [1, 2]
+  residues:
+    1: {ires: 1, linkage: NGLB, linkage_patch: NGLB, linked_chain: D, linked_ires: null, linked_resid: '82', resid: 1, resname: BGLCNA}
+    2: {ires: 2, linkage: 14BB, linkage_patch: 14BB, linked_chain: P, linked_ires: 1, linked_resid: 1, resid: 2, resname: BGLCNA}
+  root: 1
+  segid: CARK
+  type: n-linked
+- chain: Q
+  glycan_list:
+    Q: [1, 2]
+  grs: |
+    1 BGLCNA
+    2 - 14B: BGLCNA
+  patches: {}
+  residue_list: [1, 2]
+  residues:
+    1: {ires: 1, linkage: null, linkage_patch: null, linked_chain: null, linked_ires: null, linked_resid: null, resid: 1, resname: BGLCNA}
+    2: {ires: 2, linkage: 14BB, linkage_patch: 14BB, linked_chain: Q, linked_ires: 1, linked_resid: 1, resid: 2, resname: BGLCNA}
+  root: 1
+  segid: CARL
+  type: ligand
+- chain: R
+  glycan_list:
+    R: [1, 2, 3]
+  grs: |
+    1 BGLCNA
+    2 - 14B: BGLCNA
+    3 - - 14B: BMAN
+  patches: {}
+  residue_list: [1, 2, 3]
+  residues:
+    1: {ires: 1, linkage: null, linkage_patch: null, linked_chain: null, linked_ires: null, linked_resid: null, resid: 1, resname: BGLCNA}
+    2: {ires: 2, linkage: 14BB, linkage_patch: 14BB, linked_chain: R, linked_ires: 1, linked_resid: 1, resid: 2, resname: BGLCNA}
+    3: {ires: 3, linkage: 14BB, linkage_patch: 14BB, linked_chain: R, linked_ires: 2, linked_resid: 2, resid: 3, resname: BMAN}
+  root: 1
+  segid: CARM
+  type: ligand
+- chain: S
+  glycan_list:
+    S: [1, 2]
+  grs: |
+    1 BGLCNA
+    2 - 14B: BGLCNA
+  patches: {}
+  residue_list: [1, 2]
+  residues:
+    1: {ires: 1, linkage: null, linkage_patch: null, linked_chain: null, linked_ires: null, linked_resid: null, resid: 1, resname: BGLCNA}
+    2: {ires: 2, linkage: 14BB, linkage_patch: 14BB, linked_chain: S, linked_ires: 1, linked_resid: 1, resid: 2, resname: BGLCNA}
+  root: 1
+  segid: CARN
+  type: ligand
+- chain: T
+  glycan_list:
+    T: [1, 2]
+  grs: |
+    1 BGLCNA
+    2 - 14B: BGLCNA
+  patches: {}
+  residue_list: [1, 2]
+  residues:
+    1: {ires: 1, linkage: null, linkage_patch: null, linked_chain: null, linked_ires: null, linked_resid: null, resid: 1, resname: BGLCNA}
+    2: {ires: 2, linkage: 14BB, linkage_patch: 14BB, linked_chain: T, linked_ires: 1, linked_resid: 1, resid: 2, resname: BGLCNA}
+  root: 1
+  segid: CARO
+  type: ligand
+
