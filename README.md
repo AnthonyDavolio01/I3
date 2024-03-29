@@ -45,7 +45,7 @@ python extractPositions.py
 ```
 
 ## Step 4: 
-I3 Script
+Calculate Conditional Mutual Information:
 ```bash
 python code/I3.py
 ```
