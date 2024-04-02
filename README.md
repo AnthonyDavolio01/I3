@@ -41,7 +41,7 @@ bash code/channel_barrier/calc_barrier.sh
 
 Extract the position of amino acids:
 ```bash
-python extractPositions.py
+python code/positions/extractPositions.py
 ```
 
 ## Step 4: Calculate Conditional Mutual Information
