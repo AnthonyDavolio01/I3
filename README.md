@@ -8,12 +8,14 @@
  - numpy
  - sklearn
 
+## Step 0: Make output directory structure
+bash code/mdir.sh
 
 ## Step 1: Generate Inputs
 Use CHARMM-GUI PDB reader & manipulator to generate the input files.
 https://www.charmm-gui.org/?doc=input/pdbreader
 
-We used 6DG8 from RCSB and translated its center of mass to the origin with the following script using PyMol.
+We used 6X3Z from RCSB and translated its center of mass to the origin with the following script using PyMol.
 ```bash
 python code\align\align.py
 python code\align\crd.py
@@ -50,5 +52,5 @@ python code/I3.py
 ```
 
 ### Visualization
-Open the input/6dg8_aligned.pdb with PyMol
+Open the input/6x3z_aligned.pdb with PyMol
 Paste the contents of output/i3colors.txt and output/i3set.txt directly into PyMol

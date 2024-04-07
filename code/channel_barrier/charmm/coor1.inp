@@ -24,7 +24,7 @@ label loop
     traj read
 
     !read coor file unit 11 ifile @x
-    OPEN WRITE CARD UNIT 12 NAME output/observables/barrier/coors/1_5ht3.@x.coor
+    OPEN WRITE CARD UNIT 12 NAME output/observables/barrier/coors/1_lig.@x.coor
     WRITE COOR CARD UNIT 12
     !WRITE COOR PDB UNIT 12
 

@@ -5,7 +5,7 @@ import argparse
 parser = argparse.ArgumentParser()
 
 parser.add_argument('-f','--frames',default=300, help='number of frames after equilibration')
-parser.add_argument('-nc','--numCat',default=6, help='number of ligand CV categories')
+parser.add_argument('-nc','--numCat',default=3, help='number of ligand CV categories')
 
 args = parser.parse_args()
 

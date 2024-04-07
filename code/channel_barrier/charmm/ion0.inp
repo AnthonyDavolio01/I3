@@ -7,7 +7,7 @@
 DIMENS CHSIZE 5000000 MAXRES 3000000
 
 !PRNLEV 0
-!BOMBLEV -2
+BOMBLEV -2
 
 open write card unit 69 name output/observables/barrier/channel/ionchan0.txt
 echu 69
@@ -28,22 +28,26 @@ set f 100
 label loop
 
 
-    open read card unit 10 name output/observables/barrier/coors/0_na_5ht3.@f.coor
+    open read card unit 10 name output/observables/barrier/coors/0_na_lig.@f.coor
     read coor card unit 10
     close unit 10
 
-    !-38, -37, -36, -35
-    set z -38 !HERE
-    COOR TRANS zdir 42 SELE segid HETF END
+    !95,96,97
+    set z 95 !HERE
+    COOR TRANS zdir 95 SELE segid HETF END !HERE
+    COOR TRANS xdir -13.4 SELE segid HETF END !HERE
+    COOR TRANS ydir 13.4 SELE segid HETF END !HERE
     label loop2
         COOR TRANS zdir 1 SELE segid HETF END !HERE
+        COOR TRANS xdir -.14 SELE segid HETF END !HERE
+        COOR TRANS ydir .14 SELE segid HETF END !HERE
         HBONDs UPDAte
         NBONDs UPDAte
         INTEraction NOPRint SELE segid HETF END SELE segid PROA .or. segid PROB .or. segid PROC .or. segid PROD .or. segid PROE END
         set e ?ener
         echo @e
         incr z by 1 !HERE
-    if z lt -34 goto loop2 !HERE
+    if z lt 98 goto loop2 !HERE
     echo ___
 
     incr f by 1

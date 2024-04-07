@@ -3,9 +3,9 @@ from sklearn.decomposition import PCA
 import argparse
 
 parser = argparse.ArgumentParser()
-parser.add_argument('-nc','--numCat',default=6, help='number of ligand CV categories')
+parser.add_argument('-nc','--numCat',default=3, help='number of ligand CV categories')
 parser.add_argument('-f','--frames',default=300, help='number of frames after equilibration')
-parser.add_argument('-aa','--numAminos',default=489, help='number of amino acids')
+parser.add_argument('-aa','--numAminos',default=1677, help='number of amino acids')
 args = parser.parse_args()
 f=int(args.frames)
 nc=int(args.numCat)
@@ -85,14 +85,31 @@ numColor=50
 sorted_indices = np.argsort(normalized_arr)[::-1]
 
 # Get the indices of the 50 highest values
-top_50_indices = sorted_indices[:numColor]
+top_50_indices = sorted_indices#[:numColor]
 
+idd=[]
+pseg=[]
+for i in range(7,341):
+    idd.append(i)
+    pseg.append("PROA")
+for i in range(10,348):
+    idd.append(i)
+    pseg.append("PROB")
+for i in range(7,341):
+    idd.append(i)
+    pseg.append("PROC")
+for i in range(10,348):
+    idd.append(i)
+    pseg.append("PROD")
+for i in range(10,358):
+    idd.append(i)
+    pseg.append("PROE")
 
 with open("output/i3colors.txt", "w") as file:
     for aa in top_50_indices:
-        file.write("set_color me"+str(aa)+", [0,"+str(1-normalized_arr[aa])+","+str(normalized_arr[aa])+"]\n")
+        file.write("set_color me"+str(aa)+", ["+str(normalized_arr[aa])+","+str(1-normalized_arr[aa])+",0]\n")#
 
 with open("output/i3set.txt", "w") as file:
     for aa in top_50_indices:
 #        file.write("set_color "+str(aa)+", [0,0,"+str(normalized_arr[aa])+"]\n")
-        file.write("cmd.color(\'me"+str(aa)+"\', \'resi "+str(aa+8)+"\')\n")
+        file.write("cmd.color(\'me"+str(aa)+"\', \'seg "+pseg[aa]+" and resi "+str(idd[aa])+"\')\n")
