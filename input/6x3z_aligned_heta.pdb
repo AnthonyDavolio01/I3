@@ -1,0 +1,33 @@
+ATOM      1  N   ABU   405       8.057  21.258 -21.101  0.00 34.40      HETA N  
+ATOM      2  C1  ABU   405       9.161  21.065 -22.048  0.00 34.40      HETA C  
+ATOM      3  O1  ABU   405      14.095  20.972 -21.665  0.00 34.40      HETA O  
+ATOM      4  C2  ABU   405      10.440  21.574 -21.395  0.00 34.40      HETA C  
+ATOM      5  O2  ABU   405      12.774  22.128 -20.353  0.00 34.40      HETA O  
+ATOM      6  C3  ABU   405      11.668  21.025 -22.113  0.00 34.40      HETA C  
+ATOM      7  C4  ABU   405      12.881  21.402 -21.308  0.00 34.40      HETA C  
+ATOM      8  H1  ABU   405       7.177  21.107 -21.573  0.00 34.40      HETA H  
+ATOM      9  H2  ABU   405       8.148  20.601 -20.339  0.00 34.40      HETA H  
+ATOM     10  H3  ABU   405       8.965  21.609 -22.972  0.00 34.40      HETA H  
+ATOM     11  H4  ABU   405       9.262  20.006 -22.286  0.00 34.40      HETA H  
+ATOM     12  H5  ABU   405      10.456  22.663 -21.440  0.00 34.40      HETA H  
+ATOM     13  H6  ABU   405      10.461  21.238 -20.358  0.00 34.40      HETA H  
+ATOM     14  H7  ABU   405      11.736  21.440 -23.119  0.00 34.40      HETA H  
+ATOM     15  H8  ABU   405      11.597  19.940 -22.191  0.00 34.40      HETA H  
+ATOM     16  H9  ABU   405      12.844  21.611 -19.548  0.00 34.40      HETA H  
+CONECT    1    2    8    9
+CONECT    2    1    4   10   11
+CONECT    3    7
+CONECT    4    2    6   12   13
+CONECT    5   16    7
+CONECT    6    4    7   14   15
+CONECT    7    6    3    5
+CONECT    8    1
+CONECT    9    1
+CONECT   10    2
+CONECT   11    2
+CONECT   12    4
+CONECT   13    4
+CONECT   14    6
+CONECT   15    6
+CONECT   16    5
+END

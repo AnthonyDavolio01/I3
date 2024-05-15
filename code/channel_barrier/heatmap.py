@@ -4,6 +4,7 @@ import argparse
 
 data=np.load('output/observables/barrier/channel/all_barrier.npy')
 parser = argparse.ArgumentParser()
+
 parser.add_argument('-nc','--numCat',default=31, help='number of ligand CV categories')
 parser.add_argument('-f','--numFrames',default=3900, help='number of frames after equilibration')
 args = parser.parse_args()

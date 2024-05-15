@@ -2,68 +2,64 @@
 
 DIMENS CHSIZE 5000000 MAXRES 3000000
 
-BOMLEV -2
+BOMLEV -3
 
 stream input/charmm-gui_input-generator/toppar_w_dir.str
 
 ! Read PROA
-open read card unit 10 name input/6dg8_aligned_proa.crd
+open read card unit 10 name input/6x3z_aligned_proa.crd
 read sequence coor card unit 10 resid
 generate PROA setup warn first NTER last CTER
 
-open read unit 10 card name input/6dg8_aligned_proa.crd
+open read unit 10 card name input/6x3z_aligned_proa.crd
 read coor unit 10 card resid
 
 ! Read PROB
-open read card unit 10 name input/6dg8_aligned_prob.crd
+open read card unit 10 name input/6x3z_aligned_prob.crd
 read sequence coor card unit 10 resid
 generate PROB setup warn first NTER last CTER
 
-open read unit 10 card name input/6dg8_aligned_prob.crd
+open read unit 10 card name input/6x3z_aligned_prob.crd
 read coor unit 10 card resid
 
 ! Read PROC
-open read card unit 10 name input/6dg8_aligned_proc.crd
+open read card unit 10 name input/6x3z_aligned_proc.crd
 read sequence coor card unit 10 resid
 generate PROC setup warn first NTER last CTER
 
-open read unit 10 card name input/6dg8_aligned_proc.crd
+open read unit 10 card name input/6x3z_aligned_proc.crd
 read coor unit 10 card resid
 
 ! Read PROD
-open read card unit 10 name input/6dg8_aligned_prod.crd
+open read card unit 10 name input/6x3z_aligned_prod.crd
 read sequence coor card unit 10 resid
 generate PROD setup warn first NTER last CTER
 
-open read unit 10 card name input/6dg8_aligned_prod.crd
+open read unit 10 card name input/6x3z_aligned_prod.crd
 read coor unit 10 card resid
 
 ! Read PROE
-open read card unit 10 name input/6dg8_aligned_proe.crd
+open read card unit 10 name input/6x3z_aligned_proe.crd
 read sequence coor card unit 10 resid
 generate PROE setup warn first NTER last CTER
 
-open read unit 10 card name input/6dg8_aligned_proe.crd
+open read unit 10 card name input/6x3z_aligned_proe.crd
 read coor unit 10 card resid
 
 !DELE ATOM SELE RESID 1 : 15 END
 
 ! Load ligands
-open read card unit 10 name input/6dg8_aligned_heta.crd
-read sequence coor card unit 10 resid
-generate HETA setup warn first none last none
-
-open read unit 10 card name input/6dg8_aligned_heta.crd
-read coor unit 10 card resid
+open read card unit 10 name input/6x3z_aligned_heta.pdb
+read segid HETA PDB build setup unit 10
 
 
 autogenerate off
 ! Disulfide bonds
-patch disu PROA 135 PROA 149 setup warn
-patch disu PROB 135 PROB 149 setup warn
-patch disu PROC 135 PROC 149 setup warn
-patch disu PROD 135 PROD 149 setup warn
-patch disu PROE 135 PROE 149 setup warn
+patch disu PROA 136 PROA 150 setup warn
+patch disu PROB 139 PROB 153 setup warn
+patch disu PROC 136 PROC 150 setup warn
+patch disu PROD 139 PROD 153 setup warn
+patch disu PROE 151 PROE 165 setup warn
 
 autogenerate on
 autogenerate angles dihedrals
@@ -94,9 +90,9 @@ prnlev 5
 
 ! check if there are unknown coordinate
 define XXX sele .not. INIT show end
+
 DELE ATOM sele .not. INIT show end
 if ?nsel .gt. 0 stop ! ABNORMAL TERMINATION: Undefined coordinates
-
 ENERGY
 MINI SD NSTEP 3000
 

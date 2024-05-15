@@ -8,6 +8,7 @@ import argparse
 parser = argparse.ArgumentParser()
 
 parser.add_argument('-t', '--tag', default='profile_check', help='txt file name generated from previous charmm command')
+
 parser.add_argument('-n','--numPoints',default=4, help='number of points in ion channel')
 parser.add_argument('-f','--frames',default=3900, help='number of frames after equilibration')
 

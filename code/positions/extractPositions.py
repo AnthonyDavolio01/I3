@@ -3,8 +3,9 @@ import numpy as np
 import argparse
 
 parser = argparse.ArgumentParser()
-parser.add_argument('-nc','--numCat',default=6, help='number of ligand CV categories')
+parser.add_argument('-nc','--numCat',default=3, help='number of ligand CV categories')
 parser.add_argument('-s','--start',default=100, help='start frame')
+
 parser.add_argument('-e','--end',default=4000, help='end frame')
 parser.add_argument('-aa','--numAminos',default=489*5, help='number of amino acids')
 args = parser.parse_args()
