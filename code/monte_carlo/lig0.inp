@@ -88,10 +88,11 @@ prnlev 5
 
 ! check if there are unknown coordinate
 define XXX sele .not. INIT show end
+DELE ATOM sele .not. INIT show end
 if ?nsel .gt. 0 stop ! ABNORMAL TERMINATION: Undefined coordinates
 
 ENERGY
-
+MINI SD NSTEP 3000
 
 ! Output files
 open write unit 42 card name output/mc/0lig.psf
@@ -119,7 +120,7 @@ MC ISEEd 391004
 write psf unit 42 card
 
 !Best run 2e7, 2e6 for a quick run
-MC IACCept 0 NSTEp 2e6 TEMP 310.15 -
+MC IACCept 0 NSTEp 2e7 TEMP 310.15 -
 INBFrq 400 IECHeck 800 IMGFrq 800 IDOMcfrq 10 -
 IUNC 69 NSAVc 5000
 

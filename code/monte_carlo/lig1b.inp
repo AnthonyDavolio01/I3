@@ -1,0 +1,136 @@
+* 1 Ligand MC
+
+DIMENS CHSIZE 5000000 MAXRES 3000000
+
+BOMLEV -2
+
+stream input/charmm-gui_input-generator/toppar_w_dir.str
+
+! Read PROA
+open read card unit 10 name input/6dg8_aligned_proa.crd
+read sequence coor card unit 10 resid
+generate PROA setup warn first NTER last CTER
+
+open read unit 10 card name input/6dg8_aligned_proa.crd
+read coor unit 10 card resid
+
+! Read PROB
+open read card unit 10 name input/6dg8_aligned_prob.crd
+read sequence coor card unit 10 resid
+generate PROB setup warn first NTER last CTER
+
+open read unit 10 card name input/6dg8_aligned_prob.crd
+read coor unit 10 card resid
+
+! Read PROC
+open read card unit 10 name input/6dg8_aligned_proc.crd
+read sequence coor card unit 10 resid
+generate PROC setup warn first NTER last CTER
+
+open read unit 10 card name input/6dg8_aligned_proc.crd
+read coor unit 10 card resid
+
+! Read PROD
+open read card unit 10 name input/6dg8_aligned_prod.crd
+read sequence coor card unit 10 resid
+generate PROD setup warn first NTER last CTER
+
+open read unit 10 card name input/6dg8_aligned_prod.crd
+read coor unit 10 card resid
+
+! Read PROE
+open read card unit 10 name input/6dg8_aligned_proe.crd
+read sequence coor card unit 10 resid
+generate PROE setup warn first NTER last CTER
+
+open read unit 10 card name input/6dg8_aligned_proe.crd
+read coor unit 10 card resid
+
+!DELE ATOM SELE RESID 1 : 15 END
+
+! Load ligands
+open read card unit 10 name input/6dg8_aligned_hetb.crd
+read sequence coor card unit 10 resid
+generate HETB setup warn first none last none
+
+open read unit 10 card name input/6dg8_aligned_hetb.crd
+read coor unit 10 card resid
+
+
+autogenerate off
+! Disulfide bonds
+patch disu PROA 135 PROA 149 setup warn
+patch disu PROB 135 PROB 149 setup warn
+patch disu PROC 135 PROC 149 setup warn
+patch disu PROD 135 PROD 149 setup warn
+patch disu PROE 135 PROE 149 setup warn
+
+autogenerate on
+autogenerate angles dihedrals
+
+
+!Print heavy atoms with unknown coordinates
+coor print sele ( .not. INIT ) .and. ( .not. hydrogen ) end
+
+define ROT sele .byres. (.not. INIT .and. (type CB .or. type CG*)) .and. -
+                         .not. ( resn *PRO .or. resn *ALA ) end
+define XXX sele ROT .and. type CA end
+set nres = ?nsel
+set ires = 1
+label build_rot
+    define YYY sele .byres. ( XXX .subset. @ires ) end
+    define ZZZ sele .bonded. YYY .and. .not. YYY .and. .not. (type N .or. type C) end
+    if ?nsel .gt. 0 define ROT sele ROT .and. .not. YYY end
+    incr ires by 1
+if ires .le. @nres goto build_rot
+
+ic param
+ic build
+define LONEPAIR sele chem LPH end
+if ?nsel .gt. 0 coor shake sele LONEPAIR end
+prnlev 0
+hbuild sele hydr end 
+prnlev 5
+
+! check if there are unknown coordinate
+define XXX sele .not. INIT show end
+DELE ATOM sele .not. INIT show end
+if ?nsel .gt. 0 stop ! ABNORMAL TERMINATION: Undefined coordinates
+
+ENERGY
+MINI SD NSTEP 3000
+
+
+! Output files
+open write unit 42 card name output/mc/1blig.psf
+
+open write UNFO unit 69 name output/mc/1blig.dcd
+
+
+MOVE ADD MVTP TORS WEIGht 1 DMAX 180.0 FEWEr 1 -
+         SELE ALL END SELE ALL END
+
+MOVE ADD MVTP CROT WEIGht 10 DMAX 90.0 NLIMit 1 -
+         SELE ((TYPE N).OR.(TYPE CA).OR.(TYPE C)) END -
+         SELE (TYPE C) END  SELE (TYPE N) END -
+         SELE (RESNAME PRO .AND. TYPE CA) END -
+         SELE (RESNAME PRO .AND. TYPE  N) END - 
+         SELE (RESNAME CYS .AND. TYPE CA) END -
+         SELE (RESNAME CYS .AND. TYPE N) END
+
+MOVE ADD MVTP RTRN BYATom WEIGht 1
+
+! Need to restrict the disulfide cystein phi and psi bonds
+
+MC ISEEd 391004
+
+write psf unit 42 card
+
+!Best run 2e7, 2e6 for a quick run
+MC IACCept 0 NSTEp 2e7 TEMP 310.15 -
+INBFrq 400 IECHeck 800 IMGFrq 800 IDOMcfrq 10 -
+IUNC 69 NSAVc 5000
+
+
+stop
+

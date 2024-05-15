@@ -1,0 +1,58 @@
+* title
+* b
+
+BOMBLEV -2
+
+! Input files
+DIMENS CHSIZE 5000000 MAXRES 3000000
+
+!PRNLEV 0
+!BOMBLEV -2
+
+open write card unit 69 name output/observables/nrgs/nrgs3abe.txt
+echu 69
+
+! Read topology and parameter files
+stream input/charmm-gui_input-generator/toppar_w_dir.str
+
+
+open read card unit 10 name output/mc/3lig.psf
+read psf unit 10
+close unit 10
+
+open read unform unit 22 name output/mc/3abelig.dcd
+TRAJECTORY FIRSTU 22 NUNIT 1
+!traj query unit 22
+
+
+!Begin loop
+
+set x 1
+label loop
+    traj read
+    HBONDs UPDAte
+    NBONDs UPDAte
+
+
+    set a 1
+    label loop2
+        INTEraction NOPRint SELE resid @a .and. segid PROA END SELE segid PROA .or. segid PROB .or. segid PROC .or. segid PROD .or. segid PROE END
+        set e ?ener
+        echo @e
+        INTEraction NOPRint SELE resid @a .and. segid PROB END SELE segid PROA .or. segid PROB .or. segid PROC .or. segid PROD .or. segid PROE END
+        set e ?ener
+        echo @e
+        INTEraction NOPRint SELE resid @a .and. segid PROC END SELE segid PROA .or. segid PROB .or. segid PROC .or. segid PROD .or. segid PROE END
+        set e ?ener
+        echo @e
+        INTEraction NOPRint SELE resid @a .and. segid PROD END SELE segid PROA .or. segid PROB .or. segid PROC .or. segid PROD .or. segid PROE END
+        set e ?ener
+        echo @e
+        INTEraction NOPRint SELE resid @a .and. segid PROE END SELE segid PROA .or. segid PROB .or. segid PROC .or. segid PROD .or. segid PROE END
+        set e ?ener
+        echo @e
+        incr a by 1
+    if a lt 489 goto loop2
+    echo ___
+    incr x by 1
+if x lt ?nfile goto loop

@@ -39,16 +39,37 @@ Calculate the Ion Channel Barrier of each frame:
 bash code/channel_barrier/calc_barrier.sh
 ```
 
+Extract the energy of amino acids:
+```bash
+for n in 0 1a 1b 1c 1d 1e 2ab 2ac 2ad 2ae 2bc 2bd 2be 2cd 2ce 2de 3abc 3abd 3abe 3acd 3ace 3ade 3bcd 3bce 3cde 4abcd 4abce 4abde 4acde 4bcde 5
+do
+charmm -i code/nrgs/nrgs$n.inp
+done
+python code/nrgs/read.py ### at this step, still need to fix
+```
+
+
+## Step 4: Calculate Thermodynamic Coupling Function
+```bash
+```
+
+### -- Visualization --
+Open the input/6dg8_aligned.pdb with PyMol,
+paste the contents of output/i3colors.txt then output/i3set.txt directly into PyMol.
+
+
+### -- Deprecated --
 Extract the position of amino acids:
 ```bash
 python code/positions/extractPositions.py
-```
-
-## Step 4: Calculate Conditional Mutual Information
+``` 
+Calculate Conditional Mutual Information
 ```bash
 python code/I3.py
 ```
 
-### Visualization
-Open the input/6dg8_aligned.pdb with PyMol
-Paste the contents of output/i3colors.txt and output/i3set.txt directly into PyMol
+
+L:
+cd repositories
+cd I3
+wsl -u root

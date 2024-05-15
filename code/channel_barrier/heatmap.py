@@ -4,8 +4,8 @@ import argparse
 
 data=np.load('output/observables/barrier/channel/all_barrier.npy')
 parser = argparse.ArgumentParser()
-parser.add_argument('-nc','--numCat',default=6, help='number of ligand CV categories')
-parser.add_argument('-f','--numFrames',default=300, help='number of frames after equilibration')
+parser.add_argument('-nc','--numCat',default=31, help='number of ligand CV categories')
+parser.add_argument('-f','--numFrames',default=3900, help='number of frames after equilibration')
 args = parser.parse_args()
 
 ligCV = []
@@ -14,16 +14,27 @@ for c in range(int(args.numCat)):
         ligCV.append(c)
 ligCV = np.array(ligCV)
 
-heatmap, xedges, yedges = np.histogram2d(ligCV, data, bins=20)
+l2=[]
+d2=[]
+for i in range(len(data)):
+    if data[i]!=0:
+        l2.append(ligCV[i])
+        d2.append(data[i])
+
+print(len(ligCV))
+print(len(l2))
+
+
+heatmap, xedges, yedges = np.histogram2d(l2, d2, bins=20)
 
 xmesh, ymesh = np.meshgrid(xedges[:-1], yedges[:-1])
 
 plt.pcolormesh(xmesh, ymesh, heatmap.T, cmap='viridis')
-plt.colorbar(label='Density')
+plt.colorbar(label='# of snapshots')
 
 plt.xlabel('# of Ligands Bound')
-plt.ylabel('Channel Energy Barrier')
-plt.title('Energy Barrier vs # of Ligands Bound Heat Density Map')
+plt.ylabel('Channel Energy Barrier (KCal / Mol)')
+plt.title('Energy Barrier against # of Ligands Bound Heat Density Map')
 
 plt.show()
 

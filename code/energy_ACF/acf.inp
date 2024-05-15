@@ -14,11 +14,11 @@ echu 69
 
 stream input/charmm-gui_input-generator/toppar_w_dir.str
 
-open read card unit 10 name output/mc/3lig.psf
+open read card unit 10 name output/mc/0lig.psf
 read psf unit 10
 close unit 10
 
-open read unform unit 22 name output/mc/3lig.dcd
+open read unform unit 22 name output/mc/0lig.dcd
 TRAJECTORY FIRSTU 22 NUNIT 1
 !traj query unit 22
 

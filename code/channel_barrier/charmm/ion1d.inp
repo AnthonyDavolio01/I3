@@ -1,0 +1,50 @@
+* Calculate energy down the ion channel
+
+
+
+
+! Input files
+DIMENS CHSIZE 5000000 MAXRES 3000000
+
+!PRNLEV 0
+!BOMBLEV -2
+
+open write card unit 69 name output/observables/barrier/channel/ionchan1d.txt
+echu 69
+
+
+! Read topology and parameter files
+stream input/charmm-gui_input-generator/toppar_w_dir.str
+
+!Has sodium if in barrier folder
+open read card unit 10 name output/observables/barrier/psf/1lig.psf 
+read psf unit 10
+close unit 10
+
+
+
+! START FRAME HERE
+set f 100
+label loop
+
+
+    open read card unit 10 name output/observables/barrier/coors/1d_na_5ht3.@f.coor
+    read coor card unit 10
+    close unit 10
+
+    !-38, -37, -36, -35
+    set z -38 !HERE
+    COOR TRANS zdir 42 SELE segid HETF END
+    label loop2
+        COOR TRANS zdir 1 SELE segid HETF END !HERE
+        HBONDs UPDAte
+        NBONDs UPDAte
+        INTEraction NOPRint SELE segid HETF END SELE segid PROA .or. segid PROB .or. segid PROC .or. segid PROD .or. segid PROE END
+        set e ?ener
+        echo @e
+        incr z by 1 !HERE
+    if z lt -34 goto loop2 !HERE
+    echo ___
+
+    incr f by 1
+if f lt 400 goto loop !HERE
